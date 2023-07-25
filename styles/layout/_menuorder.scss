@@ -1,0 +1,71 @@
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(5, 1fr); /* แสดงแถวละ 5 สำหรับ pc */
+    grid-gap: 20px;
+}
+
+@media (max-width: 768px) { /* ปรับขนาดแถวเป็น 2 สำหรับ mobile */
+    .product-container {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+.product {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.product-image {
+    width: 100%;
+    height: auto;
+}
+
+.product-name {
+    font-size: 18px;
+    margin: 10px 0;
+}
+
+.product-price {
+    font-size: 16px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+.product-quantity {
+    display: flex;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.quantity-button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 30px;
+    height: 30px;
+    background-color: #ccc;
+    border-radius: 50%;
+    margin: 0 10px;
+    cursor: pointer;
+}
+
+.quantity {
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.add-to-cart-button {
+    padding: 10px 20px;
+    background-color: #ff4500;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.add-to-cart-button:hover {
+    background-color: #ff6347;
+}

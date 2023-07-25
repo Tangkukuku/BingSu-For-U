@@ -1,0 +1,117 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model User {
+id       Int      @id @default(autoincrement())
+userCode String? @unique @default(uuid())
+username String? @unique
+password String?
+firstName String?
+lastName String?
+point Int?
+email String? @unique
+telephone String? @unique
+active String?
+role String?
+createdBy String?
+createdDate DateTime? @default(now())
+lastModifiedBy String?
+lastModifiedDate DateTime? @updatedAt
+
+}
+
+model Menu {
+id Int      @id @default(autoincrement())
+menuCode String? @default(uuid())
+nameFood String?
+price Decimal? @default(0)
+statusMenu String?
+category String?
+number String? //ลำดับของอาหารที่เพิ่มขึ้นมา
+quantity Int? @default(0)
+createdBy String?
+createdDate DateTime? @default(now())
+lastModifiedBy String?
+lastModifiedDate DateTime? @updatedAt
+}
+
+model OrderHdr {
+id Int      @id @default(autoincrement())
+userCode String? 
+docNumber String? @unique @default(uuid())
+employee String?
+tableNumber String?
+people Int?
+statusBill String?
+price Decimal? @default(0)
+discount Decimal? @default(0)
+createdBy String?
+createdDate DateTime @default(now())
+lastModifiedBy String?
+lastModifiedDate DateTime? @updatedAt
+
+}
+
+model OrderDtl {
+id Int      @id @default(autoincrement())
+docNumber String? @unique
+menuCode String? @unique
+qty String?
+price Decimal? @default(0)
+discount Decimal? @default(0)
+statusDtl String?
+createdBy String?
+createdDate DateTime? @default(now())
+lastModifiedBy String?
+lastModifiedDate DateTime? @updatedAt
+
+}
+
+model FileIni {
+id Int      @id @default(autoincrement())
+sector String?
+header String?
+value String?
+remark String?
+valueType  String?
+createdBy String?
+createdDate DateTime? @default(now())
+lastModifiedBy String?
+lastModifiedDate DateTime? @updatedAt
+
+}
+
+model Table {
+id Int      @id @default(autoincrement())
+tableNumber String? @unique
+docNumber String?
+emptyFlag String?
+createdBy String?
+createdDate DateTime? @default(now())
+lastModifiedBy String?
+lastModifiedDate DateTime? @updatedAt
+
+
+}
+
+model ShortenUrlMap {
+id Int      @id @default(autoincrement())
+fullUrl String?
+ShortenUrl String?
+expiredDate String?
+createdBy String?
+createdDate DateTime? @default(now())
+lastModifiedBy String?
+lastModifiedDate DateTime? @updatedAt
+
+}
+
